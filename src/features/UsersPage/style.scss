@@ -1,13 +1,38 @@
-.container{
-    padding:  20px;
+.container {
+    padding: 20px;
 }
-.title{
+
+.title {
     display: flex;
     justify-content: space-between;
 }
-.search{
+
+.search {
     width: 300px;
 }
-.table{
+
+.table {
     margin-top: 20px;
+}
+.ant-table-wrapper {
+  overflow-x: auto;
+}
+.row-inactive {
+    background-color: #fff1f0;
+}
+
+.group-btn {
+    display: inline-flex;
+    gap: 10px;
+}
+
+.ant-btn {
+    padding: 0px 10px;
+    gap: 3px;
+}
+
+@media (max-width: 1024px) {
+    .button-text {
+        display: none;
+    }
 }

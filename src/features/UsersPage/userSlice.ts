@@ -9,6 +9,7 @@ const initialState: { users: User[] } = {
       age: '32',
       email: 'jonhbrown@gmail.com',
       address: 'New York No. 1 Lake Park',
+      status : 'active',
     },
     {
       key: 2,
@@ -16,6 +17,7 @@ const initialState: { users: User[] } = {
       age: '42',
       email: 'jimgreen@yahoo.com',
       address: 'London No. 1 Lake Park',
+      status: 'inactive'
     },
     {
       key: 3,
@@ -23,6 +25,7 @@ const initialState: { users: User[] } = {
       age: '32',
       email: 'joeblack.32@gmail.com',
       address: 'Sydney No. 1 Lake Park',
+      status: 'active',
     },
   ],
 };
@@ -43,12 +46,9 @@ const userSlice = createSlice({
     deleteUser(state, action: PayloadAction<number>) {
       state.users = state.users.filter(u => u.key !== action.payload);
     },
-		searchUser(state, action: PayloadAction<string>){
-			state.users = state.users.filter(u =>u.name.toLowerCase().includes(action.payload.toLowerCase()))
-		},
   },
 });
 
-export const { updateUser, createUser, deleteUser, searchUser} = userSlice.actions;
+export const { updateUser, createUser, deleteUser} = userSlice.actions;
 export default userSlice.reducer;
 

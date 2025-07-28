@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
-import { Button, Space, Table } from 'antd';
-import { Input, type TableProps } from "antd";
+import { Button, Grid, List, Space, Table, type TableColumnType } from 'antd';
+import { Input } from "antd";
 import '../UsersPage/style.scss'
 import type { User } from '../../types';
 import Formbase from '../../components/Form';
@@ -8,41 +8,16 @@ import ConfirmModal from '../../components/Modal/index';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../app/store';
-import { createUser, deleteUser, searchUser, updateUser } from './userSlice';
+import { createUser, deleteUser, updateUser } from './userSlice';
+import { CheckOutlined, DeleteOutlined, EditOutlined, StopOutlined, UserAddOutlined } from '@ant-design/icons';
+const { useBreakpoint } = Grid;
 
 const { Search } = Input;
-
-// const data: User[] = [
-// 	{
-// 		key: 1,
-// 		name: 'John Brown',
-// 		age: '32',
-// 		email: 'jonhbrown@gmail.com',
-// 		address: 'New York No. 1 Lake Park',
-
-// 	},
-// 	{
-// 		key: 2,
-// 		name: 'Jim Green',
-// 		age: '42',
-// 		email: 'jimgreen@yahoo.com',
-// 		address: 'London No. 1 Lake Park',
-
-// 	},
-// 	{
-// 		key: 3,
-// 		name: 'Joe Black',
-// 		age: '32',
-// 		email: 'joeblack.32@gmail.com',
-// 		address: 'Sydney No. 1 Lake Park',
-// 	},
-// ];
 
 const ManageUsers: React.FC = () => {
 
 	const dispatch = useDispatch();
 	const users = useSelector((state: RootState) => state.user.users);
-	
 
 	const [editingUser, setEditingUser] = useState<User | null>(null);
 	const [modalOpen, setModalOpen] = useState(false);
@@ -50,6 +25,11 @@ const ManageUsers: React.FC = () => {
 	const [deleteUserId, setDeleteUserId] = useState<number | null>(null);
 	const [titleModal, setTitleModal] = useState('');
 	const [nameButton, setNameButton] = useState('');
+	const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
+	const [selectedRows, setSelectedRows] = useState<User[]>([]);
+
+	const screens = useBreakpoint();
+	const isSmallView = !screens.lg;
 
 	const filteredUsers = useMemo(() => {
 		return users.filter((u) =>
@@ -57,7 +37,7 @@ const ManageUsers: React.FC = () => {
 		);
 	}, [users, searchTerm]);
 
-	const columns: TableProps<User>['columns'] = [
+	const columns: TableColumnType<User>[] = [
 		{
 			title: 'Name',
 			dataIndex: 'name',
@@ -68,7 +48,6 @@ const ManageUsers: React.FC = () => {
 			title: 'Age',
 			dataIndex: 'age',
 			key: 'age',
-			width: 200,
 		},
 		{
 			title: 'Email',
@@ -83,33 +62,53 @@ const ManageUsers: React.FC = () => {
 			ellipsis: true,
 		},
 		{
+			title: 'Status',
+			dataIndex: 'status',
+			key: 'status',
+			ellipsis: true,
+		},
+		{
 			title: 'Action',
 			key: 'action',
-			render: (_, record: User) => (
+			width: 200,
+			render: (record: User) => (
 				<Space size="middle">
 					<Button
-
+						icon={<EditOutlined />}
 						onClick={() => {
 							setTitleModal('Edit user');
 							setEditingUser(record);
 							setModalOpen(true);
-							setNameButton('Save')
+							setNameButton('Save');
 						}}
+						size={isSmallView ? 'small' : 'middle'}
 					>
-						Edit
+						{!isSmallView && 'Edit'}
 					</Button>
-					<Button type='primary' danger
-						onClick={() => setDeleteUserId(record.key)}>
-						Delete
+					<Button
+						icon={<DeleteOutlined />}
+						type="primary"
+						danger
+						onClick={() => setDeleteUserId(record.key)}
+						size={isSmallView ? 'small' : 'middle'}
+					>
+						{!isSmallView && 'Delete'}
 					</Button>
 				</Space>
 			),
 		},
 	];
 
-	const handleSearch = (value: string) => {
-		setSearchTerm(value);
-		dispatch(searchUser(value));
+	const handleUpdateStatus = (newStatus: string) => {
+		selectedRows.forEach(user => {
+			dispatch(updateUser({ ...user, status: newStatus }));
+		});
+		setSelectedRowKeys([])
+		setSelectedRows([])
+	};
+
+	const handleSearch = (text: string) => {
+		setSearchTerm(text)
 	};
 
 	const handleDelete = (id: number) => {
@@ -135,26 +134,90 @@ const ManageUsers: React.FC = () => {
 				<div className='title'>
 					<Search className='search' placeholder="Search Name"
 						allowClear
-						onSearch={handleSearch}
-						value={searchTerm}
-						onChange={(e) => setSearchTerm(e.target.value)} />
-					<Button className='create' type="primary"
-						onClick={() => {
-							setModalOpen(true)
-							setEditingUser(null)
-							setTitleModal("Create new user")
-							setNameButton("Submit")
-						}}>
-						Create
-					</Button>
+						onSearch={(e) => handleSearch(e)}
+					/>
+					<div className='group-btn'>
+						<Button className='create' type="primary"
+							icon={<UserAddOutlined />}
+							onClick={() => {
+								setModalOpen(true)
+								setEditingUser(null)
+								setTitleModal("Create new user")
+								setNameButton("Submit")
+							}}>
+							{!isSmallView && 'Create'}
+						</Button>
+						<Button className='active'
+							icon={<CheckOutlined />}
+							onClick={() => { handleUpdateStatus('active') }}
+							disabled={selectedRowKeys.length === 0}
+							>
+							<span className="button-text">Active</span>
+						</Button>
+						<Button className='inactive'
+							icon={<StopOutlined />}
+							onClick={() => { handleUpdateStatus('inactive') }}
+							disabled={selectedRowKeys.length === 0}>
+							<span className="button-text">Inactive</span>
+						</Button>
+					</div>
 				</div>
 				<div className='table'>
-					<Table<User> columns={columns} dataSource={filteredUsers}
-						pagination={{
-							current: 1,
-							pageSize: 8,
-						}}
-						rowKey="key" />
+					{isSmallView ?
+						(
+							<List
+								dataSource={filteredUsers}
+								renderItem={(user) => (
+									<List.Item
+										actions={[
+											<Button
+												icon={<EditOutlined />}
+												onClick={() => {
+													setTitleModal('Edit user');
+													setEditingUser(user);
+													setModalOpen(true);
+													setNameButton('Save');
+												}}
+												size="small"
+											/>,
+											<Button
+												icon={<DeleteOutlined />}
+												danger
+												onClick={() => setDeleteUserId(user.key)}
+												size="small"
+											/>,
+										]}
+									>
+										<List.Item />
+										<div><b>Name:</b> {user.name}</div>
+										<div><b>Age:</b> {user.age}</div>
+										<div><b>Email:</b> {user.email}</div>
+										<div><b>Address:</b> {user.address}</div>
+										<div><b>Status:</b> {user.status}</div>
+									</List.Item>
+								)}
+							/>
+						)
+						:
+						<Table<User>
+							rowClassName={(record) => {
+								return record.status === 'inactive' ? 'row-inactive' : '';
+							}}
+							rowSelection={{
+								selectedRowKeys,
+								onChange: (keys, rows) => {
+									setSelectedRowKeys(keys);
+									setSelectedRows(rows);
+								},
+							}}
+							columns={columns}
+							dataSource={filteredUsers}
+							pagination={{
+								current: 1,
+								pageSize: 8,
+							}}
+							rowKey="key" />
+					}
 				</div>
 			</div>
 			<Formbase
@@ -163,7 +226,7 @@ const ManageUsers: React.FC = () => {
 				visible={modalOpen}
 				onCancel={() => setModalOpen(false)}
 				onSubmit={handleSubmit}
-				initialValues={editingUser || { key: 0, name: '', age: '', email: '', address: '' }}
+				initialValues={editingUser || { key: 0, name: '', age: '', email: '', address: '', status: '' }}
 				user={editingUser}>
 			</Formbase>
 			<ConfirmModal
