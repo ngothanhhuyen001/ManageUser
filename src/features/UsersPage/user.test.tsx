@@ -1,6 +1,6 @@
 import ManageUsers from './index';
 import reducer, { initialState } from './userSlice';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 describe('userSlice', () => {
   const userA = { key: 1, name: 'John Brown', age: '32', email: 'jonhbrown@gmail.com', address: 'New York No. 1 Lake Park', status: 'active', };
