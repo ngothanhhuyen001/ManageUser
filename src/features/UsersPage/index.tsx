@@ -193,7 +193,7 @@ const ManageUsers: React.FC = () => {
 										<div><b>Age:</b> {user.age}</div>
 										<div><b>Email:</b> {user.email}</div>
 										<div><b>Address:</b> {user.address}</div>
-										<div><b>Status:</b> {user.status}</div>
+										<div><b>Status123:</b> {user.status}</div>
 									</List.Item>
 								)}
 							/>
