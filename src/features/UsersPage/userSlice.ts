@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { User } from "../../types/index";
 
-const initialState: { users: User[] } = {
+export const initialState: { users: User[] } = {
   users: [
     {
       key: 1,
@@ -38,6 +38,7 @@ const userSlice = createSlice({
 			state.users.push(action.payload);
 		},
 		updateUser(state, action: PayloadAction<User>) {
+      console.log(action)
       const index = state.users.findIndex(u => u.key === action.payload.key);
       if (index !== -1) {
         state.users[index] = action.payload;

@@ -200,6 +200,7 @@ const ManageUsers: React.FC = () => {
 						)
 						:
 						<Table<User>
+							data-testid="table"
 							rowClassName={(record) => {
 								return record.status === 'inactive' ? 'row-inactive' : '';
 							}}
@@ -236,7 +237,6 @@ const ManageUsers: React.FC = () => {
 			/>
 		</>
 	)
-
 }
 export default ManageUsers;
 
