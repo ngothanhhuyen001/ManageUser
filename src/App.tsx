@@ -1,11 +1,18 @@
 import { App as AntdApp } from 'antd';
 import './App.css'
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import ManageUsers from './features/UsersPage';
+import LoginPage from './features/LoginPage';
 
 function App() {
   return (
     <AntdApp>
-      <ManageUsers/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<LoginPage />}></Route>
+          <Route path='/' element={<ManageUsers />} />
+        </Routes>
+      </BrowserRouter>
     </AntdApp>
   )
 }

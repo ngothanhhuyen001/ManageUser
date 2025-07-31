@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Button, Grid, List, Space, Table, type TableColumnType } from 'antd';
 import { Input } from "antd";
 import '../UsersPage/style.scss'
@@ -134,7 +134,7 @@ const ManageUsers: React.FC = () => {
 				<div className='title'>
 					<Search className='search' placeholder="Search Name"
 						allowClear
-						onSearch={(e) => handleSearch(e)}
+						onSearch={(e: string) => handleSearch(e)}
 					/>
 					<div className='group-btn'>
 						<Button className='create' type="primary"
