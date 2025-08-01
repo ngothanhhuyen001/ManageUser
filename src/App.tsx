@@ -6,6 +6,7 @@ import LoginPage from './features/LoginPage';
 import ProtectedRoute from './routes/ProtectedRoute';
 import GuestRoute from './routes/GuestRoute';
 import HomePage from './features/HomePage';
+import AccountPage from './features/AccountPage';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             </ProtectedRoute>
           }>
             <Route index element={<ManageUsers />}/>
+            <Route path='/account' element={<AccountPage/>}/>
           </Route>
           
         </Routes>

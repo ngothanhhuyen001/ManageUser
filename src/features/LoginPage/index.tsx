@@ -15,7 +15,10 @@ const LoginPage = () => {
 
   const handleSubmit = (values: { email: string, password: string }) => {
     if (values.email !== '' && values.password !== '')
+    {
       localStorage.setItem("token", "1234567890")
+      localStorage.setItem("account", JSON.stringify({'name' :'Huyen', 'age': '20', 'email': '1213@bestarion.com', 'address': 'Ho Chi Minh'}))
+    }
     const token = localStorage.getItem("token")
     if (token)
       navigate('/')
