@@ -4,12 +4,12 @@ import { Input } from "antd";
 import '../UsersPage/style.scss'
 import type { User } from '../../types';
 import Formbase from '../../components/Form';
-import ConfirmModal from '../../components/Modal/index';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../app/store';
 import { createUser, deleteUser, updateUser } from './userSlice';
 import { CheckOutlined, DeleteOutlined, EditOutlined, StopOutlined, UserAddOutlined } from '@ant-design/icons';
+import Modal from '../../components/Modal/index';
 const { useBreakpoint } = Grid;
 
 const { Search } = Input;
@@ -151,7 +151,7 @@ const ManageUsers: React.FC = () => {
 							icon={<CheckOutlined />}
 							onClick={() => { handleUpdateStatus('active') }}
 							disabled={selectedRowKeys.length === 0}
-							>
+						>
 							<span className="button-text">Active</span>
 						</Button>
 						<Button className='inactive'
@@ -230,11 +230,14 @@ const ManageUsers: React.FC = () => {
 				initialValues={editingUser || { key: 0, name: '', age: '', email: '', address: '', status: '' }}
 				user={editingUser}>
 			</Formbase>
-			<ConfirmModal
+			<Modal
+				title='Confirm'
 				visible={!!deleteUserId}
 				onCancel={() => setDeleteUserId(null)}
 				onConfirm={() => deleteUserId && handleDelete(deleteUserId)}
-			/>
+			>
+				Do you want to delete these user?
+			</Modal>
 		</>
 	)
 }

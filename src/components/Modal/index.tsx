@@ -1,30 +1,34 @@
 
 import './style.scss'
-import { Modal } from 'antd';
+import { Modal as AntdModal } from 'antd';
 
 interface ModalProps {
   visible: boolean;
   onCancel: () => void;
   onConfirm: () => void;
+  title: string;
+  okText?: string;
+  cancelText?: string;
+  children: React.ReactNode,
 }
 
-const ConfirmModal: React.FC<ModalProps> = ({ visible, onCancel, onConfirm }) => {
+const Modal: React.FC<ModalProps> = ({children ,  title, visible, onCancel, onConfirm, okText = 'Yes', cancelText = 'No' }) => {
   return (
-    <Modal
-      className='confirm-modal'
+    <AntdModal
+      className='modal-wrapper'
       open={visible}
-      title="Confirm"
+      title={title}
       closeIcon={null}
       onCancel={onCancel}
       onOk={onConfirm}
-      okText="Yes"
-      okButtonProps={{ type: "primary"}}
-      cancelText="No"
+      okText={okText}
+      okButtonProps={{ type: "primary" }}
+      cancelText={cancelText}
       centered
     >
-      Do you want to delete these user?
-    </Modal>
+      {children}
+    </AntdModal>
   );
 };
 
-export default ConfirmModal;
+export default Modal;
