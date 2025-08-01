@@ -1,6 +1,11 @@
-.input-wrapper{
+.input-wrapper {
   display: flex;
-    gap: 10px;
-    align-items: center;
-    padding-bottom: 20px;
+  gap: 10px;
+  align-items: center;
+  padding-bottom: 20px;
+
+  .input-label {
+    width: 80px;
+    text-align: left;
+  }
 }

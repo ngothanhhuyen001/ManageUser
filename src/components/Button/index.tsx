@@ -1,6 +1,5 @@
 import { Button } from "antd";
 import type { ButtonProps } from "antd/es/button/button";
-import type React from "react";
 
 interface Props {
   className: string;

@@ -1,15 +1,14 @@
 
 import './style.scss'
-import React from 'react';
 import { Modal } from 'antd';
 
-interface DeleteConfirmModalProps {
+interface ModalProps {
   visible: boolean;
   onCancel: () => void;
   onConfirm: () => void;
 }
 
-const ConfirmModal: React.FC<DeleteConfirmModalProps> = ({ visible, onCancel, onConfirm }) => {
+const ConfirmModal: React.FC<ModalProps> = ({ visible, onCancel, onConfirm }) => {
   return (
     <Modal
       className='confirm-modal'

@@ -8,7 +8,7 @@ const InputBase = (props: { label?: string; name: string; placeholder: string; t
 
   return (
     <div className="input-wrapper">
-      {label && <span>{label}</span>}
+      {label && <span className="input-label">{label}</span>}
       <Input {...field} placeholder={placeholder} type={type} onChange={onChange} />
       {meta.touched && meta.error && (
         <div style={{ color: "red", marginTop: 4 }}>{meta.error}</div>
