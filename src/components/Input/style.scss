@@ -2,10 +2,17 @@
   display: flex;
   gap: 10px;
   align-items: center;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 
   .input-label {
     width: 80px;
     text-align: left;
   }
+  .input{
+    width: 100%;
+  }
 }
+  .input-error{
+    color: red;
+    text-align: left;
+  }

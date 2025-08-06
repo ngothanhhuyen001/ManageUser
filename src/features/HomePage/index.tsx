@@ -2,23 +2,16 @@ import { Dropdown, type MenuProps } from "antd"
 import { Outlet } from "react-router-dom";
 import './style.scss'
 import { useNavigate } from 'react-router-dom';
-import { useReducer, useEffect } from "react";
-import { accountReducer, initialState } from "./reducers/accountReducers";
+import { useContext } from "react";
+import { UserContext } from "../../context/userContext";
 
 type MenuItem = Required<MenuProps>['items'][number];
 
 const HomePage = () => {
 
   const navigate = useNavigate();
-  const account = JSON.parse(localStorage.getItem('account') || "");
-  const [state, dispatch] = useReducer(accountReducer, initialState)
-  console.log(state);
-  console.log("render")
 
-  useEffect(() => {
-    dispatch({ type: "set_account", payload: account })
-  }, [])
-
+  const { state } = useContext(UserContext);
 
   const items: MenuItem[] = [
     {
@@ -40,6 +33,8 @@ const HomePage = () => {
       navigate('/login');
     }
   };
+
+
   return (
     <>
       <div>

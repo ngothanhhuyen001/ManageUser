@@ -17,7 +17,7 @@ const LoginPage = () => {
     if (values.email !== '' && values.password !== '')
     {
       localStorage.setItem("token", "1234567890")
-      localStorage.setItem("account", JSON.stringify({'name' :'Huyen', 'age': '20', 'email': '1213@bestarion.com', 'address': 'Ho Chi Minh'}))
+      localStorage.setItem("account", JSON.stringify({'name' :'Huyen', 'age': '20', 'email': '1213@bestarion.com', 'address': 'Ho Chi Minh', 'password' : "123456"}))
     }
     const token = localStorage.getItem("token")
     if (token)

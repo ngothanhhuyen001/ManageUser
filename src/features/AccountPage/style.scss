@@ -9,3 +9,17 @@
     text-align: center;
   }
 }
+.change-password-btn{
+  text-align: end;
+}
+.change-password-form
+{
+  .input-wrapper{
+   flex-wrap: wrap;
+   padding-bottom: 10px;
+   gap: 0px;
+  }
+  .input-label{
+    width: 170px;
+  }
+}
