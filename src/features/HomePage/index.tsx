@@ -4,6 +4,7 @@ import './style.scss'
 import { useNavigate } from 'react-router-dom';
 import { useContext } from "react";
 import { UserContext } from "../../context/userContext";
+import { AppstoreOutlined, SunOutlined, TikTokOutlined } from "@ant-design/icons";
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -34,14 +35,27 @@ const HomePage = () => {
     }
   };
 
-
   return (
     <>
       <div>
         <div className="menu-header">
-          <Dropdown menu={{ items, onClick }} >
-            <span>{state.name}</span>
-          </Dropdown>
+          <div>
+            <TikTokOutlined />
+            <span>Meperia Price Management</span>
+          </div>
+          <div>
+            <AppstoreOutlined />
+            Home
+          </div>
+          <div>
+            <SunOutlined />
+            Vendor Performance
+          </div>
+          <div>
+            <Dropdown menu={{ items, onClick }} >
+              <span>{state.name}</span>
+            </Dropdown>
+          </div>
         </div>
         <div>
           <Outlet />

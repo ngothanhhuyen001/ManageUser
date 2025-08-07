@@ -8,6 +8,9 @@ import GuestRoute from './routes/GuestRoute';
 import HomePage from './features/HomePage';
 import AccountPage from './features/AccountPage';
 import { UserProvider } from './context/userContext';
+import DashboardPage from './features/DashboardPage';
+import VendorPerformancePage from './features/VendorPerformancePage';
+import DetailVendorPage from './features/DetailVendorPage';
 
 function App() {
   return (
@@ -20,7 +23,6 @@ function App() {
                 <GuestRoute>
                   <LoginPage />
                 </GuestRoute>
-
               }
             />
             <Route path='/' element={
@@ -30,8 +32,10 @@ function App() {
             }>
               <Route index element={<ManageUsers />} />
               <Route path='/account' element={<AccountPage />} />
+              <Route path='/dashboard' element={<DashboardPage />} />
+              <Route path='/vendor' element={<VendorPerformancePage />} />
+              <Route path='/detail' element={<DetailVendorPage/>}/>
             </Route>
-
           </Routes>
         </BrowserRouter>
       </AntdApp>
