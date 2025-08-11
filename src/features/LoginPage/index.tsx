@@ -1,9 +1,9 @@
 import { Formik } from "formik";
-import InputBase from "../../components/Input";
 import '../LoginPage/style.scss'
 import { useNavigate } from "react-router-dom";
 import { Button } from "antd";
 import * as Yup from "yup";
+import { InputBase } from "../../share/components";
 
 const LoginPage = () => {
   const navigate = useNavigate();

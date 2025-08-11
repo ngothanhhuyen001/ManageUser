@@ -1,12 +1,11 @@
 import { Formik, type FormikProps } from "formik";
-import InputBase from "../../components/Input";
 import { Button, message } from "antd";
 import * as Yup from "yup";
 import './style.scss'
 import { useContext, useRef, useState } from "react";
-import Modal from "../../components/Modal";
-import { UserContext } from "../../context/userContext";
-import type { State } from "../../context/accountReducers";
+import { UserContext } from "../../share/context/userContext";
+import type { State } from "../../share/context/accountReducers";
+import { InputBase, ModalBase } from "../../share/components";
 
 const AccountPage = () => {
 
@@ -79,7 +78,7 @@ const AccountPage = () => {
         </form>
       )}
     </Formik>
-    <Modal
+    <ModalBase
       visible={openModal}
       onCancel={() => setOpenModal(false)}
       onConfirm={() => { formRef.current?.submitForm() }}
@@ -116,7 +115,7 @@ const AccountPage = () => {
           )}
         </Formik>
       }>
-    </Modal>
+    </ModalBase>
   </div>
 }
 export default AccountPage;

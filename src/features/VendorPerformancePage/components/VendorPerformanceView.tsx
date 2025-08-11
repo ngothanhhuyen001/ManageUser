@@ -1,102 +1,25 @@
-import { Col, Row, Table, Tag, type TableProps } from "antd"
-import CardBase from "../../../components/Card/BasicCard"
-import PerformanceCard from "../../../components/Card/PerformanceCard"
-import type { vendor } from "../../../types/vendor.type"
-import { dataVendor } from "../../../utility/dataTableVendor"
+import { Col, Row, Table } from "antd"
+import type { vendor } from "../../../share/types/vendor.type"
 import '../style.scss'
-import { RiseOutlined } from "@ant-design/icons"
+import { BasicCard, PerformanceCard } from "../../../share/components"
+import { columsVendor, dataVendor } from "../utils"
 
-type Props =
-  {
-    setDetailView: () => void
-  }
+type Props = { setDetailView: () => void }
 
 const VendorPerformancePage: React.FC<Props> = ({ setDetailView }) => {
-
-
-  const colums: TableProps<vendor>['columns'] = [
-    {
-      title: 'Date',
-      dataIndex: 'date',
-      key: '1',
-      width: '12%',
-    },
-    {
-      title: 'Vendor',
-      dataIndex: 'vendor',
-      key: '2',
-      width: '12%',
-    },
-    {
-      title: 'AI Risk Score',
-      dataIndex: 'aiRiskScore',
-      key: '3',
-      width: '12%',
-    },
-    {
-      title: '90-Day Trend',
-      dataIndex: 'dateTrend',
-      key: '4',
-      width: '12%',
-      render: (value) => {
-        return <span>
-          <RiseOutlined style={{ color: 'red', fontSize: 16 }} />
-          {value}
-        </span>
-
-      },
-    },
-    {
-      title: 'AI-Powered Analysis',
-      dataIndex: 'poweredAnalysis',
-      key: '5',
-      width: '12%',
-    },
-    {
-      title: 'Status',
-      dataIndex: 'status',
-      key: '6',
-      width: '12%',
-      render: (status: string | null) => {
-        let color = '';
-        if (status === 'Monitored') {
-          color = 'yellow';
-        } else if (status === 'Action Required') {
-          color = 'red';
-        } else if (status === 'Stable') {
-          color = 'green';
-        }
-        return <Tag color={color}>{status}</Tag>;
-      },
-    },
-    {
-      title: 'Note',
-      dataIndex: 'note',
-      key: '7',
-      width: '12%',
-      render: (note) => note || '-'
-    },
-    {
-      title: 'Action',
-      dataIndex: '',
-      key: '8',
-      width: '12%',
-      render: () => <a onClick={setDetailView}>View Detail</a>,
-    },
-  ]
 
   return <div className="vendor-performannce-container">
     <div>
       <h2>Vendor Performance Dashboard</h2>
       <Row gutter={[32, 32]}>
         <Col span={8} >
-          <CardBase label={"Total Vendors"} content="250" color="#0958d9" />
+          <BasicCard label={"Total Vendors"} content="250" color="#0958d9" />
         </Col>
         <Col span={8} >
-          <CardBase label={"High-Risk Vendors"} content="12" color="#ff4d4f" />
+          <BasicCard label={"High-Risk Vendors"} content="12" color="#ff4d4f" />
         </Col>
         <Col span={8} >
-          <CardBase label={"Quarterly Rish Trend"} content="8%" color="#4096ff" />
+          <BasicCard label={"Quarterly Rish Trend"} content="8%" color="#4096ff" />
         </Col>
       </Row>
     </div>
@@ -124,7 +47,7 @@ const VendorPerformancePage: React.FC<Props> = ({ setDetailView }) => {
       <Table<vendor>
         className="custom-table"
         dataSource={dataVendor}
-        columns={colums}
+        columns={columsVendor({ setDetailView })}
         pagination={false}
         scroll={{ x: 'max-content', y: 65 * 5 }} />
     </div>

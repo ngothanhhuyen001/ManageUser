@@ -3,14 +3,13 @@ import './App.css'
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import ManageUsers from './features/UsersPage';
 import LoginPage from './features/LoginPage';
-import ProtectedRoute from './routes/ProtectedRoute';
-import GuestRoute from './routes/GuestRoute';
-import HomePage from './features/HomePage';
 import AccountPage from './features/AccountPage';
-import { UserProvider } from './context/userContext';
+import { UserProvider } from './share/context/userContext';
 import DashboardPage from './features/DashboardPage';
 import VendorPerformancePage from './features/VendorPerformancePage';
-import DetailVendorPage from './features/DetailVendorPage';
+import HomePage from './share/components/Layout/Header';
+import { GuestRoute, ProtectedRoute } from './share/components/Auth';
+
 
 function App() {
   return (
@@ -34,7 +33,6 @@ function App() {
               <Route path='/account' element={<AccountPage />} />
               <Route path='/dashboard' element={<DashboardPage />} />
               <Route path='/vendor' element={<VendorPerformancePage />} />
-              <Route path='/detail' element={<DetailVendorPage/>}/>
             </Route>
           </Routes>
         </BrowserRouter>

@@ -1,4 +1,4 @@
-import reducer, { initialState } from './userSlice';
+import reducer, { initialState } from '../../share/slices/userSlice';
 
 describe('userSlice', () => {
   const userA = { key: 1, name: 'John Brown', age: '32', email: 'jonhbrown@gmail.com', address: 'New York No. 1 Lake Park', status: 'active', };

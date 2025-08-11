@@ -1,10 +1,6 @@
 import { Col, Row } from "antd"
-import CardBase from "../../components/Card/BasicCard"
-import DateRangePicker from "../../components/DateRangePicker"
-import SelectBase from "../../components/Select"
-import CardList from "../../components/Card/CardList"
-import ExceptionsCard from "../../components/Card/ExceptionsCard"
 import './style.scss'
+import {CardList, ExceptionsCard, BasicCard, SelectBase, DateRangePicker } from "../../share/components"
 
 const DashboardPage = () => {
   return <div className="dashboard-container">
@@ -16,16 +12,16 @@ const DashboardPage = () => {
     <div>
       <Row gutter={[16, 16]}>
         <Col span={6}>
-          <CardBase label={"Total PO Processed"} content={"1"} color="#2f54eb"></CardBase>
+          <BasicCard label={"Total PO Processed"} content={"1"} color="#2f54eb"></BasicCard>
         </Col>
         <Col span={6}>
-          <CardBase label={"Unacknowledged POs"} content={"2"} color="#ffc53d"></CardBase>
+          <BasicCard label={"Unacknowledged POs"} content={"2"} color="#ffc53d"></BasicCard>
         </Col>
         <Col span={6}>
-          <CardBase label={"POs with Exception"} content={"3"} color="#ffec3d"></CardBase>
+          <BasicCard label={"POs with Exception"} content={"3"} color="#ffec3d"></BasicCard>
         </Col>
         <Col span={6}>
-          <CardBase label={"Perfect Order Rate"} content={"4"} color="#a0d911"></CardBase>
+          <BasicCard label={"Perfect Order Rate"} content={"4"} color="#a0d911"></BasicCard>
         </Col>
       </Row>
     </div>

@@ -3,8 +3,8 @@ import { Outlet } from "react-router-dom";
 import './style.scss'
 import { useNavigate } from 'react-router-dom';
 import { useContext } from "react";
-import { UserContext } from "../../context/userContext";
 import { AppstoreOutlined, SunOutlined, TikTokOutlined } from "@ant-design/icons";
+import { UserContext } from "../../../context/userContext";
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -39,19 +39,22 @@ const HomePage = () => {
     <>
       <div>
         <div className="menu-header">
-          <div>
+          <div className="logo-menu-header">
             <TikTokOutlined />
             <span>Meperia Price Management</span>
           </div>
-          <div>
-            <AppstoreOutlined />
-            Home
+          <div className="tap-menu-header" >
+            <div onClick={() => navigate('/dashboard')}>
+              <AppstoreOutlined />
+              Home
+            </div>
+            <div onClick={() => navigate('/vendor')}>
+              <SunOutlined />
+              Vendor Performance
+            </div>
+
           </div>
-          <div>
-            <SunOutlined />
-            Vendor Performance
-          </div>
-          <div>
+          <div className="user-menu-header">
             <Dropdown menu={{ items, onClick }} >
               <span>{state.name}</span>
             </Dropdown>

@@ -1,0 +1,17 @@
+.menu-header {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  box-shadow: 0 1px 2px -2px #00000029, 0 3px 6px #0000001f, 0 5px 12px 4px #00000017;
+
+  .tap-menu-header {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+  }
+
+  .user-menu-header {
+    width: 100%;
+    text-align: end;
+  }
+}

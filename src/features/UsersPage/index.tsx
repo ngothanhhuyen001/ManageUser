@@ -1,15 +1,15 @@
 import { useMemo, useState } from 'react';
-import { Button, Grid, List, Space, Table, type TableColumnType } from 'antd';
+import { Button, Grid, List, Table } from 'antd';
 import { Input } from "antd";
 import '../UsersPage/style.scss'
-import type { User } from '../../types';
-import Formbase from '../../components/Form';
+import type { User } from '../../share/types';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../app/store';
-import { createUser, deleteUser, updateUser } from './userSlice';
+import { createUser, deleteUser, updateUser } from '../../share/slices/userSlice';
 import { CheckOutlined, DeleteOutlined, EditOutlined, StopOutlined, UserAddOutlined } from '@ant-design/icons';
-import Modal from '../../components/Modal/index';
+import { FormBase, ModalBase } from '../../share/components';
+import { userColumns } from './utils';
 const { useBreakpoint } = Grid;
 
 const { Search } = Input;
@@ -36,68 +36,6 @@ const ManageUsers: React.FC = () => {
 			u.name.toLowerCase().includes(searchTerm.toLowerCase())
 		);
 	}, [users, searchTerm]);
-
-	const columns: TableColumnType<User>[] = [
-		{
-			title: 'Name',
-			dataIndex: 'name',
-			key: 'name',
-			ellipsis: true,
-		},
-		{
-			title: 'Age',
-			dataIndex: 'age',
-			key: 'age',
-		},
-		{
-			title: 'Email',
-			dataIndex: 'email',
-			key: 'email',
-			ellipsis: true,
-		},
-		{
-			title: 'Address',
-			dataIndex: 'address',
-			key: 'address',
-			ellipsis: true,
-		},
-		{
-			title: 'Status',
-			dataIndex: 'status',
-			key: 'status',
-			ellipsis: true,
-		},
-		{
-			title: 'Action',
-			key: 'action',
-			width: 200,
-			render: (record: User) => (
-				<Space size="middle">
-					<Button
-						icon={<EditOutlined />}
-						onClick={() => {
-							setTitleModal('Edit user');
-							setEditingUser(record);
-							setModalOpen(true);
-							setNameButton('Save');
-						}}
-						size={isSmallView ? 'small' : 'middle'}
-					>
-						{!isSmallView && 'Edit'}
-					</Button>
-					<Button
-						icon={<DeleteOutlined />}
-						type="primary"
-						danger
-						onClick={() => setDeleteUserId(record.key)}
-						size={isSmallView ? 'small' : 'middle'}
-					>
-						{!isSmallView && 'Delete'}
-					</Button>
-				</Space>
-			),
-		},
-	];
 
 	const handleUpdateStatus = (newStatus: string) => {
 		selectedRows.forEach(user => {
@@ -126,6 +64,13 @@ const ManageUsers: React.FC = () => {
 		setEditingUser(null);
 		setModalOpen(false);
 	};
+
+	const handleEditUser = (user: User) => {
+		setTitleModal('Edit user');
+		setEditingUser(user);
+		setModalOpen(true);
+		setNameButton('Save');
+	}
 
 	return (
 		<>
@@ -211,7 +156,7 @@ const ManageUsers: React.FC = () => {
 									setSelectedRows(rows);
 								},
 							}}
-							columns={columns}
+							columns={userColumns({ handleEditUser, setDeleteUserId, isSmallView })}
 							dataSource={filteredUsers}
 							pagination={{
 								current: 1,
@@ -221,7 +166,7 @@ const ManageUsers: React.FC = () => {
 					}
 				</div>
 			</div>
-			<Formbase
+			<FormBase
 				title={titleModal}
 				nameButton={nameButton}
 				visible={modalOpen}
@@ -229,15 +174,15 @@ const ManageUsers: React.FC = () => {
 				onSubmit={handleSubmit}
 				initialValues={editingUser || { key: 0, name: '', age: '', email: '', address: '', status: '' }}
 				user={editingUser}>
-			</Formbase>
-			<Modal
+			</FormBase>
+			<ModalBase
 				title='Confirm'
 				visible={!!deleteUserId}
 				onCancel={() => setDeleteUserId(null)}
 				onConfirm={() => deleteUserId && handleDelete(deleteUserId)}
 			>
 				Do you want to delete these user?
-			</Modal>
+			</ModalBase>
 		</>
 	)
 }

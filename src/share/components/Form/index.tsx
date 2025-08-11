@@ -4,7 +4,7 @@ import { Formik, } from 'formik';
 import type { FormikProps } from 'formik';
 import * as Yup from "yup";
 import FormInput from "../Input/index";
-import type { User } from "../../types/user.type";
+import type { User } from "../../share/types/user.type";
 import './style.scss'
 
 interface Props {

@@ -1,13 +1,9 @@
 import { Col, Row } from "antd"
-import CustomChart from "../../../components/Chart"
-// import './style.scss'
+import '../style.scss'
 import TextArea from "antd/es/input/TextArea"
-import SelectBase from "../../../components/Select"
 import * as React from "react"
-
-interface Props {
-  setVendorView: () => void
-}
+import { CustomChart, SelectBase } from "../../../share/components"
+interface Props { setVendorView: () => void }
 
 const DetailVendorPage: React.FC<Props> = ({ setVendorView }) => {
 
