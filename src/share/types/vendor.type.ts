@@ -1,4 +1,4 @@
-export interface vendor {
+export interface Vendor {
   key: string;
   date: string;
   vendor: string;

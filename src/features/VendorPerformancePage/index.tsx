@@ -5,10 +5,9 @@ import VendorPerformancePage from "./components/VendorPerformanceView"
 const VendorView = () => {
   const [view, setView] = useState<"vendor" | "detail">("vendor")
 
-  console.log(view)
   return (
     <>
-      {view === 'vendor' ? (<VendorPerformancePage setDetailView={() => setView("detail")} />)
+      {view === 'vendor' ? (<VendorPerformancePage setDetailView={() => {setView("detail")}} />)
       :(<DetailVendorPage setVendorView={() =>setView("vendor") } />)}
     </>)
 }

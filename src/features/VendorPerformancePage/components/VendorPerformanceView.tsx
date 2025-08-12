@@ -1,5 +1,5 @@
 import { Col, Row, Table } from "antd"
-import type { vendor } from "../../../share/types/vendor.type"
+import type { Vendor } from "../../../share/types/vendor.type"
 import '../style.scss'
 import { BasicCard, PerformanceCard } from "../../../share/components"
 import { columsVendor, dataVendor } from "../utils"
@@ -44,7 +44,7 @@ const VendorPerformancePage: React.FC<Props> = ({ setDetailView }) => {
     </div>
     <div>
       <h2>Top 5 Vendors with Increasing Risk</h2>
-      <Table<vendor>
+      <Table<Vendor>
         className="custom-table"
         dataSource={dataVendor}
         columns={columsVendor({ setDetailView })}

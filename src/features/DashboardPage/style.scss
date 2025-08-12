@@ -10,6 +10,7 @@
   box-shadow: 0 1px 2px -1px #00000029, 0 3px 6px #0000001f, 0 5px 12px 4px #00000017;
   padding: 30px;
   border-radius: 10px;
+
   .date-range-picker {
     width: 100%;
 
@@ -31,6 +32,68 @@
 
     .ant-select-single {
       width: 100%;
+    }
+  }
+}
+
+.tabs-container {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  background: rgb(205, 232, 255);
+  gap: 10px;
+  border-radius: 8px;
+  margin: 20px 20px 0px 20px;
+
+  .tab {
+    padding: 10px 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px -2px #00000029, 0 3px 6px #0000001f, 0 5px 12px 4px #00000017;
+    font-weight: 600;
+
+    &.selected {
+      color: red;
+    }
+  }
+}
+
+.po-container {
+  padding: 20px;
+
+  .group-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+  }
+
+  .filter-po {
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 1px 2px -2px #00000029, 0 3px 6px #0000001f, 0 5px 12px 4px #00000017;
+    margin-bottom: 20px;
+
+    .select-filter {
+      display: flex;
+      gap: 10px;
+      .date-range-po,
+      .select-buyer-po,
+      .select-vendor-po,
+      .select-status-po,
+      .select-exception-type-po,
+      .select-severity-po {
+        width: 100%;
+      }
+    }
+  }
+
+  .table-po .ant-table-thead>tr>th {
+    background-color: #69b1ff;
+    color: white;
+    font-weight: bold;
+    .expanded-table-po .ant-table{
+      margin-bottom: 0;
+      margin-inline: 0;
     }
   }
 }

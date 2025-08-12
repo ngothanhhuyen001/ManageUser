@@ -1,8 +1,8 @@
 import { Tag } from "antd";
-import type { vendor } from "../../share/types";
+import type { Vendor } from "../../share/types";
 import { RiseOutlined } from "@ant-design/icons";
 
-export const dataVendor: vendor[] = [
+export const dataVendor: Vendor[] = [
   {
     key: "1",
     date: "2025-07-22",

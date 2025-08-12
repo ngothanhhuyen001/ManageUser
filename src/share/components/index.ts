@@ -1,7 +1,7 @@
 export * from './Button'
 export * from './Card'
 export * from './Layout'
-export {default as CustomChart} from './Chart'
+export * from './Chart'
 export {default as DateRangePicker} from './DateRangePicker'
 export {default as FormBase} from './Form'
 export {default as InputBase} from './Input'

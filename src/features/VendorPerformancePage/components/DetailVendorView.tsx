@@ -2,7 +2,9 @@ import { Col, Row } from "antd"
 import '../style.scss'
 import TextArea from "antd/es/input/TextArea"
 import * as React from "react"
-import { CustomChart, SelectBase } from "../../../share/components"
+import { LineChart, SelectBase } from "../../../share/components"
+import { RiseOutlined } from "@ant-design/icons"
+
 interface Props { setVendorView: () => void }
 
 const DetailVendorPage: React.FC<Props> = ({ setVendorView }) => {
@@ -15,7 +17,9 @@ const DetailVendorPage: React.FC<Props> = ({ setVendorView }) => {
       </div>
       <div>
         <span className="risk-score">{ }/10</span>
-        <span className="trend-label">{ }</span>
+        <span className="trend-label">
+          <RiseOutlined />
+          90-Day Trend:{ }</span>
       </div>
     </div>
     <div className="information-space">
@@ -34,16 +38,16 @@ const DetailVendorPage: React.FC<Props> = ({ setVendorView }) => {
       <div>
         <Row gutter={[32, 32]}>
           <Col span={12}>
-            <CustomChart title={"Confirmation Time (hours)"}></CustomChart>
+            <LineChart title={"Confirmation Time (hours)"} color={"blue"}></LineChart>
           </Col>
           <Col span={12}>
-            <CustomChart title={"Price Discrepancy Rate (%)"}></CustomChart>
+            <LineChart title={"Price Discrepancy Rate (%)"} color={"red"}></LineChart>
           </Col>
           <Col span={12}>
-            <CustomChart title={"Backorder Rate (%)"}></CustomChart>
+            <LineChart title={"Backorder Rate (%)"} color={"orange"}></LineChart>
           </Col>
           <Col span={12}>
-            <CustomChart title={"On-Time Delivery (%)"}></CustomChart>
+            <LineChart title={"On-Time Delivery (%)"} color={"green"}></LineChart>
           </Col>
         </Row>
       </div>

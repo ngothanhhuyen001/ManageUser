@@ -1,6 +1,6 @@
 import * as React from "react";
 import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts";
-import './style.scss'
+import '../style.scss'
 
 const data = [
   { name: 'Jan', uv: 2500, pv: 2400, amt: 2400 },
@@ -17,25 +17,26 @@ const data = [
   { name: 'Dec', uv: 4800, pv: 2400, amt: 2400 },
 ];
 
-interface CustomChart {
+interface LineChartProps {
   title: string
+  color: string
 }
 
-const CustomChart: React.FC<CustomChart> = ({title}) => {
+const CustomLineChart: React.FC<LineChartProps> = ({ title, color }) => {
 
   return (
     <div className="custom-chart">
       <div>{title}</div>
       <LineChart width={800} height={300} data={data}>
-        <CartesianGrid stroke="#aaa" strokeDasharray="5 5" />
-        <Line type="monotone" dataKey="uv" stroke="purple" strokeWidth={2} name="My data series name" />
+        <CartesianGrid stroke="#aaa" strokeDasharray="3 3" />
+        <Line type="monotone" dataKey="uv" stroke={color} strokeWidth={2} name="profit" />
         <XAxis dataKey="name" />
         <YAxis width="auto" />
-        <Legend align="right" />
+        <Legend align="center" />
         <Tooltip />
       </LineChart>
     </div>
 
   )
 }
-export default CustomChart
+export default CustomLineChart

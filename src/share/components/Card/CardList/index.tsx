@@ -4,6 +4,7 @@ import './style.scss'
 
 
 interface Item {
+
   title: string;
   value: string;
 }
@@ -17,7 +18,7 @@ const CardList: React.FC<CardListProps> = ({ list }) => {
     <div className="list-card">
       <Row gutter={[32, 16]}>
         {list.map((item) => (
-          <Col className="gutter-row" span={4}>
+          <Col className="gutter-row" span={4} key={item.title}>
             <span>{item.title}</span>
             <span className="item-value">{item.value}</span>
           </Col>

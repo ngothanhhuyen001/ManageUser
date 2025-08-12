@@ -10,12 +10,12 @@ import { InputBase, ModalBase } from "../../share/components";
 const AccountPage = () => {
 
   const [openModal, setOpenModal] = useState(false);
+  const [keyForm, setKeyForm] = useState(1);
   const [messageApi, contextHolder] = message.useMessage();
   const { dispatch } = useContext(UserContext);
   const formRef = useRef<FormikProps>(null);
 
   const account = JSON.parse(localStorage.getItem('account') || "")
-  console.log(account)
 
   const onSuccess = () => {
     messageApi.open({
@@ -43,10 +43,16 @@ const AccountPage = () => {
       onError();
     }
     else {
-      dispatch({ type: "update_field", payload: { key: 'password', value: newPass } })
-      onSuccess()
-      setOpenModal(false)
+      dispatch({ type: "update_field", payload: { key: 'password', value: newPass } });
+      onSuccess();
+      handleCloseModal()
     }
+  }
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    setKeyForm(preValue => preValue + 1);
+    //formRef.current?.handleReset();
   }
 
   const validation = Yup.object({
@@ -56,11 +62,12 @@ const AccountPage = () => {
     address: Yup.string()
   });
 
-  return <div className="account-page">
+  return <div className="account-page" key = { keyForm }>
     {contextHolder}
     <Formik initialValues={{ ...account }} enableReinitialize validationSchema={validation} onSubmit={(values) => {
       onSuccess()
       handleUpdateAccount(values)
+      
     }}>
       {({ values, handleChange, handleSubmit }) => (
         <form className="account-form">
@@ -80,8 +87,8 @@ const AccountPage = () => {
     </Formik>
     <ModalBase
       visible={openModal}
-      onCancel={() => setOpenModal(false)}
-      onConfirm={() => { formRef.current?.submitForm() }}
+      onCancel={handleCloseModal}
+      onConfirm={() => { formRef.current?.submitForm(); }}
       title="Change Password"
       children={
         <Formik initialValues={{ ...account }} enableReinitialize onSubmit={() => {
