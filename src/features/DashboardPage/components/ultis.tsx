@@ -44,6 +44,7 @@ export const columnsPO = () => [
         color = 'red';
         return <Tag color={color}>{status}</Tag>;
       }
+      return "-"
     },
   },
 ]
@@ -98,6 +99,33 @@ export const dataPO: PO[] = [
     totalQuantity: 225,
     severity: "High",
   },
+  {
+    key: "6",
+    poNumber: "PO006",
+    vendor: "Zeta Corp",
+    buyer: "Alice Johnson",
+    totalLines: 3,
+    totalQuantity: 225,
+    severity: "",
+  },
+  {
+    key: "7",
+    poNumber: "PO007",
+    vendor: "Zeta Corp",
+    buyer: "Alice Johnson",
+    totalLines: 3,
+    totalQuantity: 225,
+    severity: "",
+  },
+  {
+    key: "8",
+    poNumber: "PO008",
+    vendor: "Zeta Corp",
+    buyer: "Alice Johnson",
+    totalLines: 3,
+    totalQuantity: 225,
+    severity: "High",
+  },
 ];
 
 export const columnsExpandedPO = () => [
@@ -105,6 +133,7 @@ export const columnsExpandedPO = () => [
     title: 'Line No.',
     dataIndex: 'lineNo',
     key: '1',
+    width: "20px"
   },
   {
     title: 'Item',

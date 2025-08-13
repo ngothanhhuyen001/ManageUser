@@ -10,15 +10,16 @@ interface Item {
 interface ExceptionsCardProps {
   title: string
   list: Item[]
+  handleNewTab: (status: string) => void
 }
 
-const ExceptionsCard: React.FC<ExceptionsCardProps> = ({ title, list }) => {
+const ExceptionsCard: React.FC<ExceptionsCardProps> = ({ title, list, handleNewTab }) => {
   return (
     <div className="exception-card">
       <div className="title-exception-card">{title}</div>
       <div className="item-list">
         {list.map((item, index) => (
-          <div key={index} className={`item-status-${item.status.toLocaleLowerCase()}`}>
+          <div key={index} className={`item-status-${item.status.toLocaleLowerCase()}`} onClick={() =>handleNewTab(item.status)}>
             <span className="status">{item.status}</span> {item.value}
           </div>
         ))}

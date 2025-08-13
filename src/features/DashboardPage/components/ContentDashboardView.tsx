@@ -1,11 +1,16 @@
-import { Col, Row } from "antd"
 import '../style.scss'
-import {CardList, ExceptionsCard, BasicCard, SelectBase, DateRangePicker } from "../../../share/components"
+import { BasicCard, CardList, DateRangePicker, ExceptionsCard, SelectBase } from "../../../share/components"
+import * as React from 'react'
+import { Col, Row } from 'antd';
 
-const ContentDashboardPage = () => {
+interface Props {
+  handleAddTab: (type: string, name: string) => void;
+}
+
+const ContentDashboardPage: React.FC<Props> = ({ handleAddTab }) => {
   return <div className="dashboard-container">
     <div className="filter">
-      <DateRangePicker className="date-range-picker" title="Date Range"/>
+      <DateRangePicker className="date-range-picker" title="Date Range" />
       <SelectBase className="select-buyer" title="Buyer"></SelectBase>
       <SelectBase className="select-vendor" title="Vendor"></SelectBase>
     </div>
@@ -34,7 +39,8 @@ const ContentDashboardPage = () => {
             list={[
               { status: "High", value: "1" },
               { status: "Low", value: "2" }
-            ]} >
+            ]}
+            handleNewTab={(status: string) => handleAddTab("pomanagement", `Unacknowledgment (${status}) `)} >
           </ExceptionsCard>
         </Col>
         <Col span={8}>
@@ -43,7 +49,8 @@ const ContentDashboardPage = () => {
             list={[
               { status: "High", value: "1" },
               { status: "Low", value: "2" }
-            ]} >
+            ]}
+            handleNewTab={(status: string) => handleAddTab("pomanagement", `Price Mismatch (${status}) `)} >
           </ExceptionsCard>
         </Col>
         <Col span={8}>
@@ -52,7 +59,8 @@ const ContentDashboardPage = () => {
             list={[
               { status: "High", value: "1" },
               { status: "Low", value: "2" }
-            ]} >
+            ]}
+            handleNewTab={(status: string) => handleAddTab("pomanagement", `Backorder (${status}) `)} >
           </ExceptionsCard>
         </Col>
         <Col span={8}>
@@ -61,7 +69,8 @@ const ContentDashboardPage = () => {
             list={[
               { status: "High", value: "1" },
               { status: "Low", value: "2" }
-            ]} >
+            ]}
+            handleNewTab={(status: string) => handleAddTab("pomanagement", `UOM Mismatch (${status}) `)} >
           </ExceptionsCard>
         </Col>
         <Col span={8}>
@@ -70,7 +79,8 @@ const ContentDashboardPage = () => {
             list={[
               { status: "High", value: "1" },
               { status: "Low", value: "2" }
-            ]} >
+            ]}
+            handleNewTab={(status: string) => handleAddTab("pomanagement", `Vendor Catalog Number Mismatch (${status}) `)} >
           </ExceptionsCard>
         </Col>
         <Col span={8}>
@@ -79,7 +89,8 @@ const ContentDashboardPage = () => {
             list={[
               { status: "High", value: "1" },
               { status: "Low", value: "2" }
-            ]} >
+            ]}
+            handleNewTab={(status: string) => handleAddTab("pomanagement", `Manufacturer Number Mismatch (${status}) `)} >
           </ExceptionsCard>
         </Col>
       </Row>

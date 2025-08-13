@@ -15,7 +15,6 @@ const POManagementPage = () => {
         className="expanded-table-po"
       >Line Items for PO:</Table>
     </div>
-
   );
 
   return <div className="po-container">
@@ -37,7 +36,10 @@ const POManagementPage = () => {
     <div>
       <Table<PO> className="table-po" columns={columnsPO()} dataSource={dataPO}
         expandable={{ expandedRowRender, defaultExpandedRowKeys: ['0'] }}
-        pagination={false} />
+        pagination={false}
+        rowClassName={(record) => {
+          return record.severity === 'High' ? 'row-inactive' : '';
+        }} />
     </div>
   </div>
 }
