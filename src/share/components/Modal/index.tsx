@@ -9,16 +9,18 @@ interface ModalProps {
   title: string;
   okText?: string;
   cancelText?: string;
-  children: React.ReactNode,
+  children: React.ReactNode;
+  className?: string;
+  closeIcon?: boolean;
 }
 
-const Modal: React.FC<ModalProps> = ({children ,  title, visible, onCancel, onConfirm, okText = 'Yes', cancelText = 'No' }) => {
+const Modal: React.FC<ModalProps> = ({ children, title, visible, onCancel, onConfirm, okText = 'Yes', cancelText = 'No', className,closeIcon }) => {
   return (
     <AntdModal
-      className='modal-wrapper'
+      className={className}
       open={visible}
       title={title}
-      closeIcon={null}
+      closeIcon={closeIcon}
       onCancel={onCancel}
       onOk={onConfirm}
       okText={okText}

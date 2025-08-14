@@ -8,7 +8,7 @@ export interface PO {
   severity: string;
 }
 
-export interface PODetail {
+export interface POExpanded {
   key: string;
   lineNo: number;
   item: string;

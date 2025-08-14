@@ -1,5 +1,5 @@
 
-import { CloseOutlined } from "@ant-design/icons"
+import { CloseOutlined, PlusOutlined } from "@ant-design/icons"
 import ButtonBase from "../../../share/components/Button"
 import * as React from "react";
 
@@ -25,7 +25,7 @@ const Tabs: React.FC<tabProps> = ({ handleAddTab, handleCloseTab, tabs, tabSelec
               handleCloseTab(tab)
             }} />}
         </div>))}
-      <ButtonBase className={"button-tab"} nameButton={"+"} shape="circle" onClick={() => handleAddTab("pomanagement", "New Tab ")} />
+      <ButtonBase className={"button-tab"} icon={<PlusOutlined />} onClick={() => handleAddTab("pomanagement", "New Tab ")} shape="circle" />
     </div>
 
   )

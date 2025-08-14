@@ -1,8 +1,9 @@
 import { Tag } from "antd";
-import type { PO, PODetail } from "../../../share/types";
+import type { PO, POExpanded } from "../../../share/types";
 import { SelectBase } from "../../../share/components";
+import type { ColumnsType } from "antd/es/table";
 
-export const columnsPO = () => [
+export const columnsPO = (): ColumnsType<PO> => [
   {
     title: 'Po Number',
     dataIndex: 'poNumber',
@@ -26,12 +27,14 @@ export const columnsPO = () => [
     dataIndex: 'totalLines',
     key: '4',
     width: '16%',
+    align: "right"
   },
   {
     title: 'Total Quantity',
     dataIndex: 'totalQuantity',
     key: '5',
     width: '16%',
+    align: "right"
   },
   {
     title: 'Severity',
@@ -128,7 +131,7 @@ export const dataPO: PO[] = [
   },
 ];
 
-export const columnsExpandedPO = () => [
+export const columnsExpandedPO = (onOpenModal: () => void): ColumnsType<POExpanded> => [
   {
     title: 'Line No.',
     dataIndex: 'lineNo',
@@ -149,11 +152,12 @@ export const columnsExpandedPO = () => [
     title: 'Auantity',
     dataIndex: 'quantity',
     key: '4',
+    align: 'right',
     render: (record: { original: number; confirmed: number }) => {
       return (
-        <div style={{ lineHeight: "1.2" }}>
+        <div>
           <div>Original: {record.original}</div>
-          <div style={{ color: "red" }}>Confirmed: {record.confirmed}</div>
+          <div className="confirmed">Confirmed: {record.confirmed}</div>
         </div>
       );
     }
@@ -164,9 +168,9 @@ export const columnsExpandedPO = () => [
     key: '5',
     render: (record: { original: string; confirmed: string; }) => {
       return (
-        <div style={{ lineHeight: "1.2" }}>
+        <div>
           <div>Original: {record.original}</div>
-          <div style={{ color: "red" }}>Confirmed: {record.confirmed}</div>
+          <div className="confirmed">Confirmed: {record.confirmed}</div>
         </div>
       );
     }
@@ -175,11 +179,12 @@ export const columnsExpandedPO = () => [
     title: 'Price',
     dataIndex: 'price',
     key: '6',
+    align: 'right',
     render: (record: { original: number; confirmed: number }) => {
       return (
-        <div style={{ lineHeight: "1.2" }}>
+        <div>
           <div>Original: {record.original}</div>
-          <div style={{ color: "red" }}>Confirmed: {record.confirmed}</div>
+          <div className="confirmed">Confirmed: {record.confirmed}</div>
         </div>
       );
     }
@@ -190,9 +195,9 @@ export const columnsExpandedPO = () => [
     key: '7',
     render: (record: { original: string; confirmed: string; }) => {
       return (
-        <div style={{ lineHeight: "1.2" }}>
+        <div>
           <div>Original: {record.original}</div>
-          <div style={{ color: "red" }}>Confirmed: {record.confirmed}</div>
+          <div className="confirmed">Confirmed: {record.confirmed}</div>
         </div>
       );
     }
@@ -203,9 +208,9 @@ export const columnsExpandedPO = () => [
     key: '8',
     render: (record: { original: string; confirmed: string; }) => {
       return (
-        <div style={{ lineHeight: "1.2" }}>
+        <div>
           <div>Original: {record.original}</div>
-          <div style={{ color: "red" }}>Confirmed: {record.confirmed}</div>
+          <div className="confirmed">Confirmed: {record.confirmed}</div>
         </div>
       );
     }
@@ -219,6 +224,7 @@ export const columnsExpandedPO = () => [
     title: 'Exception Type(s)',
     dataIndex: 'exceptionType',
     key: '10',
+    width: 300,
     render: (status: string | null) => {
       let color = '';
       if (status !== 'Vendor Catalog Number Mismatch') {
@@ -231,6 +237,7 @@ export const columnsExpandedPO = () => [
     title: 'Impact Score',
     dataIndex: 'impactScope',
     key: '11',
+    align: 'right',
     render: (value: number) => {
       let color = '';
       if (value)
@@ -242,18 +249,19 @@ export const columnsExpandedPO = () => [
     title: 'Assignee',
     dataIndex: 'assignee',
     key: '12',
+    width: 150,
     render: () => <SelectBase className="" title="" />
   },
   {
     title: 'Action',
     dataIndex: 'action',
     key: '13',
-    render: () => <a>View & Resolve</a>,
+    render: () => <a onClick={onOpenModal}>View & Resolve</a>,
   },
 ]
 
 
-export const dataExpandedPO: PODetail[] = [
+export const dataExpandedPO: POExpanded[] = [
   {
     key: "1",
     lineNo: 1,

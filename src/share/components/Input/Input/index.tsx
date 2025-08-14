@@ -1,6 +1,6 @@
 import { Input } from "antd";
 import { useField } from "formik";
-import "./style.scss"
+import "../style.scss"
 
 const InputBase = (props: { value?: string; label?: string; name: string; placeholder: string; type?: string; onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void; }) => {
   const { label, name, type, placeholder, onChange, value } = props;

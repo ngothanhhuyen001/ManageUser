@@ -53,7 +53,7 @@
     font-weight: 600;
 
     &.selected {
-      color: red;
+      color: #1677ff;
     }
   }
 }
@@ -76,6 +76,7 @@
     .select-filter {
       display: flex;
       gap: 10px;
+
       .date-range-po,
       .select-buyer-po,
       .select-vendor-po,
@@ -91,9 +92,50 @@
     background-color: #69b1ff;
     color: white;
     font-weight: bold;
-    .expanded-table-po .ant-table{
+
+    .expanded-table-po .ant-table {
       margin-bottom: 0;
       margin-inline: 0;
     }
+
+    .row-inactive {
+      background-color: #fff1f0;
+    }
+
+  }
+}
+
+.confirmed {
+  color: red;
+}
+
+.modal-detail-po {
+  min-width: 1500px;
+
+  .po-information-detai,
+  .po-ai-recomand,
+  .po-resolution {
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 1px 2px -2px #00000029, 0 3px 6px #0000001f, 0 5px 12px 4px #00000017;
+    margin-bottom: 20px;
+  }
+
+  .row-po-infor-detail {
+    margin-bottom: 20px;
+
+    .po-infor-detai-data {
+      font-weight: bold;
+    }
+  }
+
+  .value-root-cause {
+    font-weight: 500;
+    color: #1677ff;
+  }
+
+  .recomended-action-po {
+    display: flex;
+    gap: 10px;
   }
 }

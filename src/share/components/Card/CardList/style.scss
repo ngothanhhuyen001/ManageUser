@@ -1,5 +1,5 @@
 .list-card {
-  border-radius:10px;
+  border-radius: 10px;
   text-align: center;
   padding: 30px;
   box-shadow: 0 1px 2px -2px #00000029, 0 3px 6px #0000001f, 0 5px 12px 4px #00000017;
@@ -14,7 +14,14 @@
     padding: 10px;
     display: flex;
     justify-content: space-between;
-    font-weight: 500;
+    font-weight: 600;
+    max-width: 250px;
+    font-size: 18px;
+    align-items: center;
+
+    .title-list-card {
+      text-align: left;
+    }
 
     .item-value {
       color: #1677ff;

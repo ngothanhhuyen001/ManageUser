@@ -3,10 +3,12 @@
     text-align: center;
     padding: 50px;
     box-shadow: 0 1px 2px -2px #00000029, 0 3px 6px #0000001f, 0 5px 12px 4px #00000017;
+    height: 55%;
 
     .title-exception-card {
         font-size: 18px;
         font-weight: bold;
+        margin-bottom: 20px;
     }
 
     .item-status-high {
@@ -19,17 +21,28 @@
         padding: 10px;
         margin-bottom: 10px;
         cursor: pointer;
+        .anticon{
+            color: red;
+            margin-right: 5px;
+        }
     }
 
     .item-status-low {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: #fafafa;
-        border-left: 5px solid #d9d9d9;
+        background-color: #f5f5f5;
+        border-left: 5px solid #bfbfbf;
         border-radius: 10px;
         padding: 10px;
         cursor: pointer;
+        .anticon{
+            color: #828282;
+            margin-right: 5px;
+        }
+    }
+    .value-item-list{
+        font-weight: 700;
     }
 
 }

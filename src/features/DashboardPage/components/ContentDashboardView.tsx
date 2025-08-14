@@ -58,7 +58,6 @@ const ContentDashboardPage: React.FC<Props> = ({ handleAddTab }) => {
             title={"Backorder"}
             list={[
               { status: "High", value: "1" },
-              { status: "Low", value: "2" }
             ]}
             handleNewTab={(status: string) => handleAddTab("pomanagement", `Backorder (${status}) `)} >
           </ExceptionsCard>
@@ -67,7 +66,7 @@ const ContentDashboardPage: React.FC<Props> = ({ handleAddTab }) => {
           <ExceptionsCard
             title={"UOM Mismatch"}
             list={[
-              { status: "High", value: "1" },
+              { status: "High", value: "0" },
               { status: "Low", value: "2" }
             ]}
             handleNewTab={(status: string) => handleAddTab("pomanagement", `UOM Mismatch (${status}) `)} >
@@ -77,7 +76,6 @@ const ContentDashboardPage: React.FC<Props> = ({ handleAddTab }) => {
           <ExceptionsCard
             title={"Vendor Catalog Number Mismatch"}
             list={[
-              { status: "High", value: "1" },
               { status: "Low", value: "2" }
             ]}
             handleNewTab={(status: string) => handleAddTab("pomanagement", `Vendor Catalog Number Mismatch (${status}) `)} >
@@ -87,7 +85,6 @@ const ContentDashboardPage: React.FC<Props> = ({ handleAddTab }) => {
           <ExceptionsCard
             title={"Manufacturer Number Mismatch"}
             list={[
-              { status: "High", value: "1" },
               { status: "Low", value: "2" }
             ]}
             handleNewTab={(status: string) => handleAddTab("pomanagement", `Manufacturer Number Mismatch (${status}) `)} >
@@ -98,11 +95,12 @@ const ContentDashboardPage: React.FC<Props> = ({ handleAddTab }) => {
     <div>
       <h1>PO Status Distribution</h1>
       <CardList list={[
-        { title: "Unconfirmed", value: "1" },
-        { title: "Acknowledged", value: "1" },
-        { title: "Exceptions", value: "1" },
-        { title: "Parked", value: "1" },
-        { title: "Cleared", value: "1" }
+        { title: "Waiting Vendor Confirmation", value: "1" },
+        { title: "Unassigned", value: "1" },
+        { title: "Assigned", value: "1" },
+        { title: "In Progress", value: "1" },
+        { title: "Complete", value: "1" },
+        { title: "Ignored", value: "1" }
       ]}></CardList>
     </div>
   </div>

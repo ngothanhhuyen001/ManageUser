@@ -1,0 +1,15 @@
+.recommended-card {
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 1px 2px -2px #00000029, 0 3px 6px #0000001f, 0 5px 12px 4px #00000017;
+  border-left: 5px solid;
+  width: 100%;
+
+  .title-card {
+    font-weight: 600;
+  }
+
+  .content-card {
+    white-space: pre-line;
+  }
+}

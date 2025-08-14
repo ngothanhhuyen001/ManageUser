@@ -3,7 +3,7 @@ import { Button, Modal } from "antd";
 import { Formik, } from 'formik';
 import type { FormikProps } from 'formik';
 import * as Yup from "yup";
-import FormInput from "../Input/index";
+import FormInput from "../Input/Input/index";
 import type { User } from "../../share/types/user.type";
 import './style.scss'
 

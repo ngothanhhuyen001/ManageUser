@@ -30,9 +30,9 @@ function App() {
                 <HomePage />
               </ProtectedRoute>
             }>
-              <Route index element={<ManageUsers />} />
+              <Route index element={<DashboardPage />} />
+              <Route path='/user' element={<ManageUsers />} />
               <Route path='/account' element={<AccountPage />} />
-              <Route path='/dashboard' element={<DashboardPage />} />
               <Route path='/vendor' element={<VendorPerformancePage />} />
             </Route>
           </Routes>

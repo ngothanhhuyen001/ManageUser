@@ -1,5 +1,6 @@
 import * as React from "react";
 import "./style.scss"
+import { ExclamationCircleOutlined, WarningOutlined } from "@ant-design/icons";
 
 interface Item {
   status: 'High' | 'Low' | 'none';
@@ -19,8 +20,20 @@ const ExceptionsCard: React.FC<ExceptionsCardProps> = ({ title, list, handleNewT
       <div className="title-exception-card">{title}</div>
       <div className="item-list">
         {list.map((item, index) => (
-          <div key={index} className={`item-status-${item.status.toLocaleLowerCase()}`} onClick={() =>handleNewTab(item.status)}>
-            <span className="status">{item.status}</span> {item.value}
+          <div key={index} className={`item-status-${item.status.toLocaleLowerCase()}`} onClick={() => handleNewTab(item.status)}>
+            <span className="status">
+              {item.status === "High" ? (
+                <div>
+                  <WarningOutlined />
+                  {item.status}
+                </div>
+              ) : (
+                <div>
+                  <ExclamationCircleOutlined />
+                  {item.status}
+                </div>)}
+            </span>
+            <span className="value-item-list">{item.value}</span>
           </div>
         ))}
       </div>
