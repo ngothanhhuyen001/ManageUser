@@ -111,6 +111,12 @@
 
 .modal-detail-po {
   min-width: 1500px;
+  top: 30px !important;
+
+  .ant-modal-body {
+    height: 80vh;
+    overflow: auto;
+  }
 
   .po-information-detai,
   .po-ai-recomand,
@@ -125,7 +131,7 @@
     margin-bottom: 20px;
 
     .po-infor-detai-data {
-      font-weight: bold;
+      font-weight: 500;
     }
   }
 

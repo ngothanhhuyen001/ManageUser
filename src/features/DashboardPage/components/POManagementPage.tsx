@@ -10,17 +10,13 @@ import { TextAreaBase } from "../../../share/components/Input"
 import "../style.scss"
 
 const POManagementPage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(true);
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const expandedRowRender = () => (
     <div>
       Line Items for PO:
       <Table<POExpanded>
-        columns={columnsExpandedPO(handleOpenModal)}
+        columns={columnsExpandedPO(() => setIsModalOpen(true))}
         dataSource={dataExpandedPO}
         pagination={false}
         className="expanded-table-po"

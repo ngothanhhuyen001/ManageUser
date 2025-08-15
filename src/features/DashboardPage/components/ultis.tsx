@@ -413,3 +413,26 @@ export const dataExpandedPO: POExpanded[] = [
     assignee: "Alice Johnson",
   },
 ]
+
+
+export const poInfoRows = [
+  [
+    { label: "Vendor", value: "Alpha Corp" },
+    { label: "Item", value: "Widget A" },
+    { label: "Expected Date", value: "25-07-06" },
+  ],
+  [
+    { label: "Original Quantity", value: "Alpha Corp" },
+    { label: "Confirmed Quantity", value: "Widget A" },
+    { label: "Original Price", value: "25-07-06" },
+  ],
+  [
+    { label: "Confirmed Price", value: "Alpha Corp" },
+    { label: "Buyer", value: "Widget A" },
+    { label: "Current Assignee", value: "Widget A" },
+  ],
+  [
+    { label: "Vendor Catalog No.", value: "Alpha Corp" },
+    { label: "Manufacturer Catalog No.", value: "Widget A" },
+  ],
+];

@@ -1,0 +1,12 @@
+.home-page-container {
+  position: relative;
+  top: 0;
+  z-index: 1500;
+
+  .scroll-to-top-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+}

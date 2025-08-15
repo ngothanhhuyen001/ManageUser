@@ -28,12 +28,9 @@ const RecommendedCard: React.FC<RecommendedCardProps> = ({ title, content, actio
       </div>
 
       <div className="action-card">
-        {actions.map((act, index) => (
-          <a
-            key={index}
-            onClick={act.onClick}
-          >
-            {act.label}
+        {actions.map((action) => (
+          <a>
+            {action.label}
           </a>
         ))}
       </div>

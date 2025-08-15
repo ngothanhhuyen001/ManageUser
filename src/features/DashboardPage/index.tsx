@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Tabs from "./components/Tabs";
 import ContentDashboardPage from "./components/ContentDashboardView";
-import POManagementPage from "./components/POManagermentPage";
+import POManagementPage from "./components/POManagementPage";
 
 
 interface Tab {

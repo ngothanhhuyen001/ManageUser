@@ -1,5 +1,4 @@
 import { Dropdown, type MenuProps } from "antd"
-import { Outlet } from "react-router-dom";
 import './style.scss'
 import { useNavigate } from 'react-router-dom';
 import { useContext, useState } from "react";
@@ -8,7 +7,7 @@ import { UserContext } from "../../../context/userContext";
 
 type MenuItem = Required<MenuProps>['items'][number];
 
-const HomePage = () => {
+const Header = () => {
 
   const [active, setActive] = useState("");
   const navigate = useNavigate();
@@ -35,43 +34,38 @@ const HomePage = () => {
       navigate('/login');
     }
   };
-  
 
   return (
-    <>
-      <div>
-        <div className="menu-header">
-          <div className="items-menu-header" >
-            <div className="logo-menu-header">
-              <TikTokOutlined />
-              Meperia Price Management
-            </div>
-            <div className={`tab-item ${active === "home" ? "active" : ""}`} 
-            onClick={() => { navigate('/dashboard')
-              setActive("home")
-             }}>
-              <AppstoreOutlined />
-              Home
-            </div>
-            <div className={`tab-item ${active === "vendor" ? "active" : ""}`} 
-             onClick={() => { navigate('/vendor')
-              setActive("vendor")
-              }}>
-              <SunOutlined />
-              Vendor Performance
-            </div>
-          </div>
-          <div className="user-menu-header">
-            <Dropdown menu={{ items, onClick }} >
-              <span>{state.name}</span>
-            </Dropdown>
-          </div>
+    <div className="menu-header">
+      <div className="items-menu-header" >
+        <div className="logo-menu-header">
+          <TikTokOutlined />
+          Meperia Price Management
         </div>
-        <div>
-          <Outlet />
+        <div className={`tab-item ${active === "home" ? "active" : ""}`}
+          onClick={() => {
+            navigate('/')
+            setActive("home")
+          }}>
+          <AppstoreOutlined />
+          Home
+        </div>
+        <div className={`tab-item ${active === "vendor" ? "active" : ""}`}
+          onClick={() => {
+            navigate('/vendor')
+            setActive("vendor")
+          }}>
+          <SunOutlined />
+          Vendor Performance
         </div>
       </div>
-    </>
+      <div className="user-menu-header">
+        <Dropdown menu={{ items, onClick }} >
+          <span>{state.name}</span>
+        </Dropdown>
+      </div>
+    </div>
+
   )
 }
-export default HomePage
+export default Header

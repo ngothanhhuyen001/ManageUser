@@ -6,11 +6,9 @@ import LoginPage from './features/LoginPage';
 import AccountPage from './features/AccountPage';
 import { UserProvider } from './share/context/userContext';
 import VendorPerformancePage from './features/VendorPerformancePage';
-import HomePage from './share/components/Layout/Header';
 import { GuestRoute, ProtectedRoute } from './share/components/Auth';
 import DashboardPage from './features/DashboardPage';
-
-
+import HomePage from './features/HomePage';
 
 function App() {
   return (
@@ -39,7 +37,6 @@ function App() {
         </BrowserRouter>
       </AntdApp>
     </UserProvider>
-
   )
 }
 
